@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Love ❤️</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Segoe UI", sans-serif;
+            background: #0d0710;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        /* =========================
+           BACKGROUND
+        ========================== */
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background:
+                radial-gradient(circle at 20% 20%, rgba(255, 60, 120, 0.18), transparent 30%),
+                radial-gradient(circle at 80% 70%, rgba(170, 50, 255, 0.15), transparent 30%);
+            pointer-events: none;
+            z-index: -2;
+        }
+
+        /* =========================
+           LOADING SCREEN
+        ========================== */
+
+        #loader {
+            position: fixed;
+            inset: 0;
+            background: #0d0710;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            z-index: 9999;
+            transition: 1s;
+        }
+
+        .loader-heart {
+            font-size: 70px;
+            animation: heartbeat 1s infinite;
+        }
+
+        #loader p {
+            margin-top: 15px;
+            color: #ff9fc2;
+            letter-spacing: 3px;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.25);
+            }
+        }
+
+        /* =========================
+           NAVBAR
+        ========================== */
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: rgba(13, 7, 16, 0.55);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+            color: #ff8eb8;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: white;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #ff8eb8;
+        }
+
+        /* =========================
+           HERO
+        ========================== */
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 120px 20px 60px;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 850px;
+            z-index: 2;
+        }
+
+        .small-text {
+            color: #ff9fc2;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            font-size: 13px;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-family: Georgia, serif;
+            font-size: clamp(55px, 10vw, 120px);
+            line-height: 0.95;
+            background: linear-gradient(135deg, #fff, #ff9fc2, #ff4f91);
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .hero h2 {
+            font-family: Georgia, serif;
+            font-size: clamp(25px, 5vw, 45px);
+            margin-top: 20px;
+            font-weight: normal;
+            color: #fff;
+        }
+
+        .typing {
+            margin: 30px auto;
+            color: #ddd;
+            min-height: 30px;
+            font-size: 17px;
+        }
+
+        .heart-button {
+            display: inline-block;
+            padding: 16px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            color: white;
+            background: linear-gradient(135deg, #ff4f91, #a42cff);
+            box-shadow: 0 10px 40px rgba(255, 79, 145, 0.3);
+            transition: 0.4s;
+        }
+
+        .heart-button:hover {
+            transform: translateY(-5px) scale(1.03);
+            box-shadow: 0 15px 50px rgba(255, 79, 145, 0.5);
+        }
+
+        /* =========================
+           FLOATING HEARTS
+        ========================== */
+
+        .heart {
+            position: fixed;
+            bottom: -50px;
+            pointer-events: none;
+            animation: floatHeart linear forwards;
+            opacity: 0.8;
+            z-index: 1;
+        }
+
+        @keyframes floatHeart {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(-110vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* =========================
+           SECTIONS
+        ========================== */
+
+        section {
+            padding: 110px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title span {
+            color: #ff7eaa;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-size: 12px;
+        }
+
+        .section-title h2 {
+            font-family: Georgia, serif;
+            font-size: 50px;
+            margin-top: 12px;
+        }
+
+        /* =========================
+           LOVE LETTER
+        ========================== */
+
+        .letter-container {
+            max-width: 850px;
+            margin: auto;
+            padding: 50px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 25px;
+            backdrop-filter: blur(15px);
+            box-shadow: 0 30px 80px rgba(0,0,0,0.3);
+        }
+
+        .letter-container p {
+            color: #ddd;
+            line-height: 2;
+            font-size: 17px;
+            margin-bottom: 20px;
+        }
+
+        .signature {
+            margin-top: 35px;
+            font-family: Georgia, serif;
+            font-size: 28px;
+            color: #ff9fc2;
+        }
+
+        /* =========================
+           MEMORIES
+        ========================== */
+
+        .memories {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .memory {
+            height: 400px;
+            border-radius: 25px;
+            overflow: hidden;
+            position: relative;
+            background: #1a101d;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .memory img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.6s;
+        }
+
+        .memory:hover img {
+            transform: scale(1.08);
+        }
+
+        .memory-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 30px 20px;
+            background: linear-gradient(transparent, rgba(0,0,0,0.9));
+        }
+
+        .memory-overlay h3 {
+            font-family: Georgia, serif;
+            font-size: 25px;
+        }
+
+        .memory-overlay p {
+            color: #ccc;
+            margin-top: 5px;
+        }
+
+        /* =========================
+           COUNTER
+        ========================== */
+
+        .counter-section {
+            text-align: center;
+        }
+
+        .counter {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .counter-box {
+            min-width: 140px;
+            padding: 30px 20px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 20px;
+        }
+
+        .counter-box strong {
+            display: block;
+            font-size: 40px;
+            color: #ff86b1;
+        }
+
+        .counter-box span {
+            color: #aaa;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* =========================
+           SURPRISE
+        ========================== */
+
+        .surprise {
+            text-align: center;
+        }
+
+        .surprise-card {
+            max-width: 700px;
+            margin: auto;
+            padding: 60px 30px;
+            border-radius: 30px;
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(255,79,145,0.12),
+                    rgba(164,44,255,0.12)
+                );
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .surprise-card h2 {
+            font-family: Georgia, serif;
+            font-size: 45px;
+            margin-bottom: 20px;
+        }
+
+        #secretMessage {
+            display: none;
+            margin-top: 30px;
+            font-family: Georgia, serif;
+            font-size: 25px;
+            color: #ffabc8;
+            line-height: 1.6;
+            animation: appear 1s ease;
+        }
+
+        @keyframes appear {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* =========================
+           FOOTER
+        ========================== */
+
+        footer {
+            padding: 50px 20px;
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.08);
+            color: #888;
+        }
+
+        footer span {
+            color: #ff7eaa;
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================== */
+
+        @media (max-width: 800px) {
+
+            nav {
+                padding: 18px 5%;
+            }
+
+            nav ul {
+                display: none;
+            }
+
+            section {
+                padding: 80px 5%;
+            }
+
+            .letter-container {
+                padding: 30px 25px;
+            }
+
+            .memories {
+                grid-template-columns: 1fr;
+            }
+
+            .memory {
+                height: 450px;
+            }
+
+            .section-title h2 {
+                font-size: 38px;
+            }
+
+            .hero h1 {
+                font-size: 65px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================
+         LOADING SCREEN
+    ========================== -->
+
+    <div id="loader">
+        <div class="loader-heart">❤️</div>
+        <p>MADE WITH LOVE</p>
+    </div>
+
+
+    <!-- =========================
+         NAVIGATION
+    ========================== -->
+
+    <nav>
+        <div class="logo">❤️ Us</div>
+
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#letter">Letter</a></li>
+            <li><a href="#memories">Memories</a></li>
+            <li><a href="#forever">Forever</a></li>
+        </ul>
+    </nav>
+
+
+    <!-- =========================
+         HERO
+    ========================== -->
+
+    <section class="hero" id="home">
+
+        <div class="hero-content">
+
+            <div class="small-text">
+                To the girl who owns my heart
+            </div>
+
+            <h1>My Love</h1>
+
+            <h2>My favorite person in this world. ❤️</h2>
+
+            <div class="typing" id="typing"></div>
+
+            <a href="#letter" class="heart-button">
+                Open My Heart ❤️
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         LOVE LETTER
+    ========================== -->
+
+    <section id="letter">
+
+        <div class="section-title">
+            <span>A letter for you</span>
+            <h2>From My Heart</h2>
+        </div>
+
+        <div class="letter-container">
+
+            <p>
+                Darling,
+            </p>
+
+            <p>
+                I wanted to write this letter because I want you to truly know what is in my heart. Since the day you became part of my life, so many things have changed for the better. You gave me reasons to smile on days when I felt tired, reasons to keep going when things became difficult, and reasons to believe that love can be something beautiful and real. Having you in my life is one of the greatest blessings I could ever ask for.
+            </p>
+
+            <p>
+                Sometimes I struggle to find the perfect words to express how much I love you, so I try to show it in other ways. That's one of the reasons why I made that website for you—a small place filled with my feelings, memories, and everything I wish I could tell you every day. Every detail of it was made with you in mind, because you are worth my time, my effort, and my heart. It may just look like lines of code and pages on a screen, but behind every part of it is my love for you. I wanted to create something that you could always visit whenever you wanted a reminder of how special you are to me. The website itself says "For My Love" and was made entirely for the girl who owns my heart.
+            </p>
+
+            <p>
+               Thank you for being patient with me, for understanding me, and for loving me despite my flaws. Thank you for every smile, every conversation, every memory, and every moment we have shared together. You have become my comfort, my happiness, and one of the most important people in my life. No matter what happens, I will continue choosing you, caring for you, supporting you, and loving you with all my heart.
+            </p>
+
+            <p>
+                Kim, you are my Darling, my Langga, and the woman I want to cherish for as long as I can. I may not always have the perfect words, but I hope you always remember this: I love you more than I can ever fully explain. Today, tomorrow, and every day after that, my heart will always choose you.
+            </p>
+
+            <div class="signature">
+                Forever yours,<br>
+                Roman ❤️
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         MEMORIES
+    ========================== -->
+
+    <section id="memories">
+
+        <div class="section-title">
+            <span>Our favorite moments</span>
+            <h2>Beautiful Memories</h2>
+        </div>
+
+        <div class="memories">
+
+            <!-- CHANGE THESE IMAGE URLS -->
+
+            <div class="memory">
+
+                <img
+                    src="file:///C:/Users/USER/Downloads/camp.jpeg.jpg"
+                    alt="Memory"
+                >
+
+                <div class="memory-overlay">
+                    <h3>Our Beginning</h3>
+                    <p>The moment everything started.</p>
+                </div>
+
+            </div>
+
+
+            <div class="memory">
+
+                <img
+                    src="file:///C:/Users/USER/Downloads/Lovebirds.jpeg.png"
+                    alt="Memory"
+                >
+
+                <div class="memory-overlay">
+                    <h3>Our Adventures</h3>
+                    <p>Every moment with you is special.</p>
+                </div>
+
+            </div>
+
+
+            <div class="memory">
+
+                <img
+                    src="file:///C:/Users/USER/Downloads/my%20babies.jpeg.png"
+                    alt="Memory"
+                >
+
+                <div class="memory-overlay">
+                    <h3>My Favorite Person</h3>
+                    <p>And hopefully, my forever person.</p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         RELATIONSHIP COUNTER
+    ========================== -->
+
+    <section class="counter-section">
+
+        <div class="section-title">
+            <span>And the story continues...</span>
+            <h2>Our Time Together</h2>
+        </div>
+
+        <p style="color:#aaa;">
+            Every second with you is a second I'll always treasure.
+        </p>
+
+        <div class="counter">
+
+            <div class="counter-box">
+                <strong id="days">0</strong>
+                <span>Days</span>
+            </div>
+
+            <div class="counter-box">
+                <strong id="hours">0</strong>
+                <span>Hours</span>
+            </div>
+
+            <div class="counter-box">
+                <strong id="minutes">0</strong>
+                <span>Minutes</span>
+            </div>
+
+            <div class="counter-box">
+                <strong id="seconds">0</strong>
+                <span>Seconds</span>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         SURPRISE
+    ========================== -->
+
+    <section class="surprise" id="forever">
+
+        <div class="section-title">
+            <span>One last thing...</span>
+            <h2>I Have A Secret ❤️</h2>
+        </div>
+
+        <div class="surprise-card">
+
+            <h2>Are you ready?</h2>
+
+            <p style="color:#aaa; margin-bottom:30px;">
+                Click the button. I made this just for you.
+            </p>
+
+            <button
+                class="heart-button"
+                onclick="showSecret()"
+                style="border:none; cursor:pointer;"
+            >
+                Click Me ❤️
+            </button>
+
+            <div id="secretMessage">
+                I LOVE YOU. ❤️<br>
+                Today, tomorrow, and every day after that.<br><br>
+                You are my favorite chapter,<br>
+                and I want you to be my forever story.
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer>
+        Made with <span>❤️</span> for the girl I love.
+        <br><br>
+        © 2026 Our Love Story
+    </footer>
+
+
+    <script>
+
+        /* =========================
+           LOADING SCREEN
+        ========================== */
+
+        window.addEventListener("load", function () {
+
+            setTimeout(function () {
+
+                document.getElementById("loader").style.opacity = "0";
+
+                setTimeout(function () {
+                    document.getElementById("loader").style.display = "none";
+                }, 1000);
+
+            }, 1500);
+
+        });
+
+
+        /* =========================
+           TYPING EFFECT
+        ========================== */
+
+        const messages = [
+            "You are my favorite notification.",
+            "You make my world a little brighter.",
+            "Every love story is beautiful, but ours is my favorite.",
+            "I would choose you again and again.",
+            "You are my home, my happiness, and my love."
+        ];
+
+        let messageIndex = 0;
+        let characterIndex = 0;
+        let deleting = false;
+
+        function typingEffect() {
+
+            const typingElement = document.getElementById("typing");
+
+            const currentMessage = messages[messageIndex];
+
+            if (!deleting) {
+
+                typingElement.textContent =
+                    currentMessage.substring(0, characterIndex + 1);
+
+                characterIndex++;
+
+                if (characterIndex === currentMessage.length) {
+
+                    deleting = true;
+
+                    setTimeout(typingEffect, 2000);
+
+                    return;
+                }
+
+            } else {
+
+                typingElement.textContent =
+                    currentMessage.substring(0, characterIndex - 1);
+
+                characterIndex--;
+
+                if (characterIndex === 0) {
+
+                    deleting = false;
+
+                    messageIndex++;
+
+                    if (messageIndex >= messages.length) {
+                        messageIndex = 0;
+                    }
+
+                }
+
+            }
+
+            setTimeout(
+                typingEffect,
+                deleting ? 40 : 80
+            );
+        }
+
+        typingEffect();
+
+
+        /* =========================
+           FLOATING HEARTS
+        ========================== */
+
+        function createHeart() {
+
+            const heart = document.createElement("div");
+
+            heart.classList.add("heart");
+
+            const hearts = ["❤️", "💗", "💖", "💕", "💓", "💞"];
+
+            heart.innerHTML =
+                hearts[Math.floor(Math.random() * hearts.length)];
+
+            heart.style.left =
+                Math.random() * 100 + "vw";
+
+            heart.style.fontSize =
+                (Math.random() * 20 + 12) + "px";
+
+            heart.style.animationDuration =
+                (Math.random() * 5 + 5) + "s";
+
+            document.body.appendChild(heart);
+
+            setTimeout(function () {
+                heart.remove();
+            }, 10000);
+        }
+
+        setInterval(createHeart, 700);
+
+
+        /* =========================
+           RELATIONSHIP COUNTER
+           CHANGE THIS DATE
+        ========================== */
+
+        // FORMAT:
+        // YEAR, MONTH - 1, DAY, HOUR, MINUTE
+
+        // You have been together for 26 days.
+        // The counter starts at exactly 26 days before this page is opened
+        // and continues counting upward in real time.
+        const relationshipStart =
+           new Date(Date.now() - (26 * 24 * 60 * 60 * 1000));
+
+
+        function updateCounter() {
+
+            const now = new Date();
+
+            const difference =
+                now - relationshipStart;
+
+            const days =
+                Math.floor(
+                    difference / (1000 * 60 * 60 * 24)
+                );
+
+            const hours =
+                Math.floor(
+                    (difference / (1000 * 60 * 60)) % 24
+                );
+
+            const minutes =
+                Math.floor(
+                    (difference / (1000 * 60)) % 60
+                );
+
+            const seconds =
+                Math.floor(
+                    (difference / 1000) % 60
+                );
+
+            document.getElementById("days").textContent =
+                days;
+
+            document.getElementById("hours").textContent =
+                hours;
+
+            document.getElementById("minutes").textContent =
+                minutes;
+
+            document.getElementById("seconds").textContent =
+                seconds;
+
+        }
+
+        updateCounter();
+
+        setInterval(updateCounter, 1000);
+
+
+        /* =========================
+           SECRET MESSAGE
+        ========================== */
+
+        function showSecret() {
+
+            const message =
+                document.getElementById("secretMessage");
+
+            message.style.display = "block";
+
+            for (let i = 0; i < 30; i++) {
+
+                setTimeout(function () {
+                    createHeart();
+                }, i * 100);
+
+            }
+
+        }
+
+    </script>
+
+</body>
+</html>
