@@ -850,27 +850,54 @@
         // You have been together for 26 days.
         // The counter starts at exactly 26 days before this page is opened
         // and continues counting upward in real time.
-      // Initializes the tracker precisely 87 days ago from this moment
-// Hardcodes your exact anniversary time to prevent timezone and refresh drift
-const relationshipStart = new Date('2026-05-29T00:00:00'); 
+        const relationshipStart =
+           new Date(Date.now() - (87 * 24 * 60 * 60 * 1000));
 
 
-function updateCounter() {
-    const now = new Date();
-    const difference = now - relationshipStart;
+        function updateCounter() {
 
-    const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
-    const minutes = Math.floor((difference / (1000 * 60)) % 60);
-    const seconds = Math.floor((difference / 1000) % 60);
+            const now = new Date();
+           new Date(Date.now() - (87 * 24 * 60 * 60 * 1000))
+            const difference =
+                now - relationshipStart;
 
-    // This updates the console, make sure to hook this up to your HTML elements
-    console.log(`${days} Days, ${hours} Hours, ${minutes} Minutes, ${seconds} Seconds`);
-}
+            const days =
+                Math.floor(
+                    difference / (1000 * 60 * 60 * 24)
+                );
 
-// Run the script instantly and refresh it every single second
-updateCounter(); 
-setInterval(updateCounter, 1000);
+            const hours =
+                Math.floor(
+                    (difference / (1000 * 60 * 60)) % 24
+                );
+
+            const minutes =
+                Math.floor(
+                    (difference / (1000 * 60)) % 60
+                );
+
+            const seconds =
+                Math.floor(
+                    (difference / 1000) % 60
+                );
+
+            document.getElementById("days").textContent =
+                days;
+
+            document.getElementById("hours").textContent =
+                hours;
+
+            document.getElementById("minutes").textContent =
+                minutes;
+
+            document.getElementById("seconds").textContent =
+                seconds;
+
+        }
+
+        updateCounter();
+
+        setInterval(updateCounter, 1000);
 
 
         /* =========================
