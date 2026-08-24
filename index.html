@@ -1,11 +1,19 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>For My Love ❤️</title>
 
     <style>
+
+        /* =========================
+           GENERAL
+        ========================== */
+
         * {
             margin: 0;
             padding: 0;
@@ -23,20 +31,27 @@
             overflow-x: hidden;
         }
 
-        /* =========================
-           BACKGROUND
-        ========================== */
-
         body::before {
             content: "";
             position: fixed;
             inset: 0;
+
             background:
-                radial-gradient(circle at 20% 20%, rgba(255, 60, 120, 0.18), transparent 30%),
-                radial-gradient(circle at 80% 70%, rgba(170, 50, 255, 0.15), transparent 30%);
+                radial-gradient(
+                    circle at 20% 20%,
+                    rgba(255, 60, 120, 0.18),
+                    transparent 30%
+                ),
+                radial-gradient(
+                    circle at 80% 70%,
+                    rgba(170, 50, 255, 0.15),
+                    transparent 30%
+                );
+
             pointer-events: none;
             z-index: -2;
         }
+
 
         /* =========================
            LOADING SCREEN
@@ -45,12 +60,17 @@
         #loader {
             position: fixed;
             inset: 0;
+
             background: #0d0710;
+
             display: flex;
             align-items: center;
             justify-content: center;
+
             flex-direction: column;
+
             z-index: 9999;
+
             transition: 1s;
         }
 
@@ -66,32 +86,46 @@
         }
 
         @keyframes heartbeat {
-            0%, 100% {
+
+            0%,
+            100% {
                 transform: scale(1);
             }
 
             50% {
                 transform: scale(1.25);
             }
+
         }
 
+
         /* =========================
-           NAVBAR
+           NAVIGATION
         ========================== */
 
         nav {
             position: fixed;
+
             top: 0;
             left: 0;
+
             width: 100%;
+
             padding: 20px 8%;
+
             display: flex;
             justify-content: space-between;
             align-items: center;
+
             z-index: 1000;
+
             background: rgba(13, 7, 16, 0.55);
+
             backdrop-filter: blur(15px);
-            border-bottom: 1px solid rgba(255,255,255,0.08);
+
+            border-bottom:
+                1px solid
+                rgba(255, 255, 255, 0.08);
         }
 
         .logo {
@@ -102,14 +136,19 @@
 
         nav ul {
             list-style: none;
+
             display: flex;
+
             gap: 30px;
         }
 
         nav a {
             text-decoration: none;
+
             color: white;
+
             font-size: 14px;
+
             transition: 0.3s;
         }
 
@@ -117,17 +156,23 @@
             color: #ff8eb8;
         }
 
+
         /* =========================
            HERO
         ========================== */
 
         .hero {
             min-height: 100vh;
+
             display: flex;
+
             align-items: center;
             justify-content: center;
+
             text-align: center;
+
             padding: 120px 20px 60px;
+
             position: relative;
         }
 
@@ -138,51 +183,95 @@
 
         .small-text {
             color: #ff9fc2;
+
             letter-spacing: 5px;
+
             text-transform: uppercase;
+
             font-size: 13px;
+
             margin-bottom: 20px;
         }
 
         .hero h1 {
             font-family: Georgia, serif;
-            font-size: clamp(55px, 10vw, 120px);
+
+            font-size:
+                clamp(55px, 10vw, 120px);
+
             line-height: 0.95;
-            background: linear-gradient(135deg, #fff, #ff9fc2, #ff4f91);
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #fff,
+                    #ff9fc2,
+                    #ff4f91
+                );
+
             -webkit-background-clip: text;
+
             color: transparent;
         }
 
         .hero h2 {
             font-family: Georgia, serif;
-            font-size: clamp(25px, 5vw, 45px);
+
+            font-size:
+                clamp(25px, 5vw, 45px);
+
             margin-top: 20px;
+
             font-weight: normal;
+
             color: #fff;
         }
 
         .typing {
             margin: 30px auto;
+
             color: #ddd;
+
             min-height: 30px;
+
             font-size: 17px;
         }
 
         .heart-button {
             display: inline-block;
+
             padding: 16px 35px;
+
             border-radius: 50px;
+
             text-decoration: none;
+
             color: white;
-            background: linear-gradient(135deg, #ff4f91, #a42cff);
-            box-shadow: 0 10px 40px rgba(255, 79, 145, 0.3);
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #ff4f91,
+                    #a42cff
+                );
+
+            box-shadow:
+                0 10px 40px
+                rgba(255, 79, 145, 0.3);
+
             transition: 0.4s;
         }
 
         .heart-button:hover {
-            transform: translateY(-5px) scale(1.03);
-            box-shadow: 0 15px 50px rgba(255, 79, 145, 0.5);
+            transform:
+                translateY(-5px)
+                scale(1.03);
+
+            box-shadow:
+                0 15px 50px
+                rgba(255, 79, 145, 0.5);
         }
+
 
         /* =========================
            FLOATING HEARTS
@@ -190,16 +279,26 @@
 
         .heart {
             position: fixed;
+
             bottom: -50px;
+
             pointer-events: none;
-            animation: floatHeart linear forwards;
+
+            animation:
+                floatHeart linear forwards;
+
             opacity: 0.8;
+
             z-index: 1;
         }
 
         @keyframes floatHeart {
+
             0% {
-                transform: translateY(0) rotate(0deg);
+                transform:
+                    translateY(0)
+                    rotate(0deg);
+
                 opacity: 0;
             }
 
@@ -208,10 +307,15 @@
             }
 
             100% {
-                transform: translateY(-110vh) rotate(360deg);
+                transform:
+                    translateY(-110vh)
+                    rotate(360deg);
+
                 opacity: 0;
             }
+
         }
+
 
         /* =========================
            SECTIONS
@@ -223,21 +327,28 @@
 
         .section-title {
             text-align: center;
+
             margin-bottom: 60px;
         }
 
         .section-title span {
             color: #ff7eaa;
+
             text-transform: uppercase;
+
             letter-spacing: 4px;
+
             font-size: 12px;
         }
 
         .section-title h2 {
             font-family: Georgia, serif;
+
             font-size: 50px;
+
             margin-top: 12px;
         }
+
 
         /* =========================
            LOVE LETTER
@@ -245,28 +356,47 @@
 
         .letter-container {
             max-width: 850px;
+
             margin: auto;
+
             padding: 50px;
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(255,255,255,0.1);
+
+            background:
+                rgba(255, 255, 255, 0.05);
+
+            border:
+                1px solid
+                rgba(255, 255, 255, 0.1);
+
             border-radius: 25px;
+
             backdrop-filter: blur(15px);
-            box-shadow: 0 30px 80px rgba(0,0,0,0.3);
+
+            box-shadow:
+                0 30px 80px
+                rgba(0, 0, 0, 0.3);
         }
 
         .letter-container p {
             color: #ddd;
+
             line-height: 2;
+
             font-size: 17px;
+
             margin-bottom: 20px;
         }
 
         .signature {
             margin-top: 35px;
+
             font-family: Georgia, serif;
+
             font-size: 28px;
+
             color: #ff9fc2;
         }
+
 
         /* =========================
            MEMORIES
@@ -274,25 +404,40 @@
 
         .memories {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
             gap: 25px;
+
             max-width: 1200px;
+
             margin: auto;
         }
 
         .memory {
             height: 400px;
+
             border-radius: 25px;
+
             overflow: hidden;
+
             position: relative;
+
             background: #1a101d;
-            border: 1px solid rgba(255,255,255,0.1);
+
+            border:
+                1px solid
+                rgba(255, 255, 255, 0.1);
         }
 
         .memory img {
             width: 100%;
+
             height: 100%;
+
             object-fit: cover;
+
             transition: 0.6s;
         }
 
@@ -302,22 +447,33 @@
 
         .memory-overlay {
             position: absolute;
+
             bottom: 0;
+
             left: 0;
             right: 0;
+
             padding: 30px 20px;
-            background: linear-gradient(transparent, rgba(0,0,0,0.9));
+
+            background:
+                linear-gradient(
+                    transparent,
+                    rgba(0, 0, 0, 0.9)
+                );
         }
 
         .memory-overlay h3 {
             font-family: Georgia, serif;
+
             font-size: 25px;
         }
 
         .memory-overlay p {
             color: #ccc;
+
             margin-top: 5px;
         }
+
 
         /* =========================
            COUNTER
@@ -329,32 +485,49 @@
 
         .counter {
             display: flex;
+
             justify-content: center;
+
             gap: 20px;
+
             flex-wrap: wrap;
+
             margin-top: 40px;
         }
 
         .counter-box {
             min-width: 140px;
+
             padding: 30px 20px;
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(255,255,255,0.1);
+
+            background:
+                rgba(255, 255, 255, 0.05);
+
+            border:
+                1px solid
+                rgba(255, 255, 255, 0.1);
+
             border-radius: 20px;
         }
 
         .counter-box strong {
             display: block;
+
             font-size: 40px;
+
             color: #ff86b1;
         }
 
         .counter-box span {
             color: #aaa;
+
             font-size: 13px;
+
             text-transform: uppercase;
+
             letter-spacing: 2px;
         }
+
 
         /* =========================
            SURPRISE
@@ -366,45 +539,68 @@
 
         .surprise-card {
             max-width: 700px;
+
             margin: auto;
+
             padding: 60px 30px;
+
             border-radius: 30px;
+
             background:
                 linear-gradient(
                     135deg,
-                    rgba(255,79,145,0.12),
-                    rgba(164,44,255,0.12)
+                    rgba(255, 79, 145, 0.12),
+                    rgba(164, 44, 255, 0.12)
                 );
-            border: 1px solid rgba(255,255,255,0.1);
+
+            border:
+                1px solid
+                rgba(255, 255, 255, 0.1);
         }
 
         .surprise-card h2 {
             font-family: Georgia, serif;
+
             font-size: 45px;
+
             margin-bottom: 20px;
         }
 
         #secretMessage {
             display: none;
+
             margin-top: 30px;
+
             font-family: Georgia, serif;
+
             font-size: 25px;
+
             color: #ffabc8;
+
             line-height: 1.6;
-            animation: appear 1s ease;
+
+            animation:
+                appear 1s ease;
         }
 
         @keyframes appear {
+
             from {
                 opacity: 0;
-                transform: translateY(20px);
+
+                transform:
+                    translateY(20px);
             }
 
             to {
                 opacity: 1;
-                transform: translateY(0);
+
+                transform:
+                    translateY(0);
             }
+
         }
+
 
         /* =========================
            FOOTER
@@ -412,8 +608,13 @@
 
         footer {
             padding: 50px 20px;
+
             text-align: center;
-            border-top: 1px solid rgba(255,255,255,0.08);
+
+            border-top:
+                1px solid
+                rgba(255, 255, 255, 0.08);
+
             color: #888;
         }
 
@@ -421,8 +622,9 @@
             color: #ff7eaa;
         }
 
+
         /* =========================
-           RESPONSIVE
+           MOBILE
         ========================== */
 
         @media (max-width: 800px) {
@@ -458,19 +660,31 @@
             .hero h1 {
                 font-size: 65px;
             }
+
         }
+
     </style>
+
 </head>
 
+
 <body>
+
 
     <!-- =========================
          LOADING SCREEN
     ========================== -->
 
     <div id="loader">
-        <div class="loader-heart">❤️</div>
-        <p>MADE WITH LOVE</p>
+
+        <div class="loader-heart">
+            ❤️
+        </div>
+
+        <p>
+            MADE WITH LOVE
+        </p>
+
     </div>
 
 
@@ -479,14 +693,31 @@
     ========================== -->
 
     <nav>
-        <div class="logo">❤️ Us</div>
+
+        <div class="logo">
+            ❤️ Us
+        </div>
 
         <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#letter">Letter</a></li>
-            <li><a href="#memories">Memories</a></li>
-            <li><a href="#forever">Forever</a></li>
+
+            <li>
+                <a href="#home">Home</a>
+            </li>
+
+            <li>
+                <a href="#letter">Letter</a>
+            </li>
+
+            <li>
+                <a href="#memories">Memories</a>
+            </li>
+
+            <li>
+                <a href="#forever">Forever</a>
+            </li>
+
         </ul>
+
     </nav>
 
 
@@ -494,7 +725,10 @@
          HERO
     ========================== -->
 
-    <section class="hero" id="home">
+    <section
+        class="hero"
+        id="home"
+    >
 
         <div class="hero-content">
 
@@ -502,13 +736,23 @@
                 To the girl who owns my heart
             </div>
 
-            <h1>My Love</h1>
+            <h1>
+                My Love
+            </h1>
 
-            <h2>My favorite person in this world. ❤️</h2>
+            <h2>
+                My favorite person in this world. ❤️
+            </h2>
 
-            <div class="typing" id="typing"></div>
+            <div
+                class="typing"
+                id="typing"
+            ></div>
 
-            <a href="#letter" class="heart-button">
+            <a
+                href="#letter"
+                class="heart-button"
+            >
                 Open My Heart ❤️
             </a>
 
@@ -524,9 +768,17 @@
     <section id="letter">
 
         <div class="section-title">
-            <span>A letter for you</span>
-            <h2>From My Heart</h2>
+
+            <span>
+                A letter for you
+            </span>
+
+            <h2>
+                From My Heart
+            </h2>
+
         </div>
+
 
         <div class="letter-container">
 
@@ -543,7 +795,7 @@
             </p>
 
             <p>
-               Thank you for being patient with me, for understanding me, and for loving me despite my flaws. Thank you for every smile, every conversation, every memory, and every moment we have shared together. You have become my comfort, my happiness, and one of the most important people in my life. No matter what happens, I will continue choosing you, caring for you, supporting you, and loving you with all my heart.
+                Thank you for being patient with me, for understanding me, and for loving me despite my flaws. Thank you for every smile, every conversation, every memory, and every moment we have shared together. You have become my comfort, my happiness, and one of the most important people in my life. No matter what happens, I will continue choosing you, caring for you, supporting you, and loving you with all my heart.
             </p>
 
             <p>
@@ -551,8 +803,13 @@
             </p>
 
             <div class="signature">
-                Forever yours,<br>
+
+                Forever yours,
+
+                <br>
+
                 Roman ❤️
+
             </div>
 
         </div>
@@ -567,24 +824,38 @@
     <section id="memories">
 
         <div class="section-title">
-            <span>Our favorite moments</span>
-            <h2>Beautiful Memories</h2>
+
+            <span>
+                Our favorite moments
+            </span>
+
+            <h2>
+                Beautiful Memories
+            </h2>
+
         </div>
+
 
         <div class="memories">
 
-            <!-- CHANGE THESE IMAGE URLS -->
 
             <div class="memory">
 
                 <img
-                    <img src="camp.jpeg.jpg" alt="Memory">
+                    src="camp.jpeg.jpg"
                     alt="Memory"
                 >
 
                 <div class="memory-overlay">
-                    <h3>Our Beginning</h3>
-                    <p>The moment everything started.</p>
+
+                    <h3>
+                        Our Beginning
+                    </h3>
+
+                    <p>
+                        The moment everything started.
+                    </p>
+
                 </div>
 
             </div>
@@ -593,13 +864,20 @@
             <div class="memory">
 
                 <img
-                    <img src="Lovebirds.jpeg.png" alt="Memory">
+                    src="Lovebirds.jpeg.png"
                     alt="Memory"
                 >
 
                 <div class="memory-overlay">
-                    <h3>Our Adventures</h3>
-                    <p>Every moment with you is special.</p>
+
+                    <h3>
+                        Our Adventures
+                    </h3>
+
+                    <p>
+                        Every moment with you is special.
+                    </p>
+
                 </div>
 
             </div>
@@ -608,16 +886,24 @@
             <div class="memory">
 
                 <img
-                   <img src="my babies.jpeg.png" alt="Memory">
+                    src="my babies.jpeg.png"
                     alt="Memory"
                 >
 
                 <div class="memory-overlay">
-                    <h3>My Favorite Person</h3>
-                    <p>And hopefully, my forever person.</p>
+
+                    <h3>
+                        My Favorite Person
+                    </h3>
+
+                    <p>
+                        And hopefully, my forever person.
+                    </p>
+
                 </div>
 
             </div>
+
 
         </div>
 
@@ -628,38 +914,85 @@
          RELATIONSHIP COUNTER
     ========================== -->
 
-    <section class="counter-section">
+    <section
+        class="counter-section"
+        id="counter"
+    >
 
         <div class="section-title">
-            <span>And the story continues...</span>
-            <h2>Our Time Together</h2>
+
+            <span>
+                And the story continues...
+            </span>
+
+            <h2>
+                Our Time Together
+            </h2>
+
         </div>
 
+
         <p style="color:#aaa;">
+
             Every second with you is a second I'll always treasure.
+
         </p>
+
 
         <div class="counter">
 
-            <div class="counter-box">
-                <strong id="days">0</strong>
-                <span>Days</span>
-            </div>
 
             <div class="counter-box">
-                <strong id="hours">0</strong>
-                <span>Hours</span>
+
+                <strong id="days">
+                    0
+                </strong>
+
+                <span>
+                    Days
+                </span>
+
             </div>
 
-            <div class="counter-box">
-                <strong id="minutes">0</strong>
-                <span>Minutes</span>
-            </div>
 
             <div class="counter-box">
-                <strong id="seconds">0</strong>
-                <span>Seconds</span>
+
+                <strong id="hours">
+                    00
+                </strong>
+
+                <span>
+                    Hours
+                </span>
+
             </div>
+
+
+            <div class="counter-box">
+
+                <strong id="minutes">
+                    00
+                </strong>
+
+                <span>
+                    Minutes
+                </span>
+
+            </div>
+
+
+            <div class="counter-box">
+
+                <strong id="seconds">
+                    00
+                </strong>
+
+                <span>
+                    Seconds
+                </span>
+
+            </div>
+
 
         </div>
 
@@ -670,34 +1003,71 @@
          SURPRISE
     ========================== -->
 
-    <section class="surprise" id="forever">
+    <section
+        class="surprise"
+        id="forever"
+    >
 
         <div class="section-title">
-            <span>One last thing...</span>
-            <h2>I Have A Secret ❤️</h2>
+
+            <span>
+                One last thing...
+            </span>
+
+            <h2>
+                I Have A Secret ❤️
+            </h2>
+
         </div>
+
 
         <div class="surprise-card">
 
-            <h2>Are you ready?</h2>
+            <h2>
+                Are you ready?
+            </h2>
 
-            <p style="color:#aaa; margin-bottom:30px;">
-                Click the button. I made this just for you.
+            <p
+                style="
+                    color:#aaa;
+                    margin-bottom:30px;
+                "
+            >
+                Click the button.
+                I made this just for you.
             </p>
+
 
             <button
                 class="heart-button"
                 onclick="showSecret()"
-                style="border:none; cursor:pointer;"
+                style="
+                    border:none;
+                    cursor:pointer;
+                "
             >
                 Click Me ❤️
             </button>
 
+
             <div id="secretMessage">
-                I LOVE YOU. ❤️<br>
-                Today, tomorrow, and every day after that.<br><br>
-                You are my favorite chapter,<br>
-                and I want you to be my forever story.
+
+                I LOVE YOU. ❤️
+
+                <br>
+
+                Today, tomorrow,
+                and every day after that.
+
+                <br><br>
+
+                You are my favorite chapter,
+
+                <br>
+
+                and I want you to be
+                my forever story.
+
             </div>
 
         </div>
@@ -710,31 +1080,58 @@
     ========================== -->
 
     <footer>
-        Made with <span>❤️</span> for the girl I love.
+
+        Made with
+        <span>❤️</span>
+        for the girl I love.
+
         <br><br>
+
         © 2026 Our Love Story
+
     </footer>
 
 
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+
     <script>
+
 
         /* =========================
            LOADING SCREEN
         ========================== */
 
-        window.addEventListener("load", function () {
+        window.addEventListener(
+            "load",
+            function () {
 
-            setTimeout(function () {
+                setTimeout(
+                    function () {
 
-                document.getElementById("loader").style.opacity = "0";
+                        document
+                            .getElementById("loader")
+                            .style.opacity = "0";
 
-                setTimeout(function () {
-                    document.getElementById("loader").style.display = "none";
-                }, 1000);
 
-            }, 1500);
+                        setTimeout(
+                            function () {
 
-        });
+                                document
+                                    .getElementById("loader")
+                                    .style.display = "none";
+
+                            },
+                            1000
+                        );
+
+                    },
+                    1500
+                );
+
+            }
+        );
 
 
         /* =========================
@@ -742,35 +1139,58 @@
         ========================== */
 
         const messages = [
+
             "You are my favorite notification.",
+
             "You make my world a little brighter.",
+
             "Every love story is beautiful, but ours is my favorite.",
+
             "I would choose you again and again.",
+
             "You are my home, my happiness, and my love."
+
         ];
 
+
         let messageIndex = 0;
+
         let characterIndex = 0;
+
         let deleting = false;
+
 
         function typingEffect() {
 
-            const typingElement = document.getElementById("typing");
+            const typingElement =
+                document.getElementById("typing");
 
-            const currentMessage = messages[messageIndex];
+            const currentMessage =
+                messages[messageIndex];
+
 
             if (!deleting) {
 
                 typingElement.textContent =
-                    currentMessage.substring(0, characterIndex + 1);
+                    currentMessage.substring(
+                        0,
+                        characterIndex + 1
+                    );
 
                 characterIndex++;
 
-                if (characterIndex === currentMessage.length) {
+
+                if (
+                    characterIndex ===
+                    currentMessage.length
+                ) {
 
                     deleting = true;
 
-                    setTimeout(typingEffect, 2000);
+                    setTimeout(
+                        typingEffect,
+                        2000
+                    );
 
                     return;
                 }
@@ -778,9 +1198,13 @@
             } else {
 
                 typingElement.textContent =
-                    currentMessage.substring(0, characterIndex - 1);
+                    currentMessage.substring(
+                        0,
+                        characterIndex - 1
+                    );
 
                 characterIndex--;
+
 
                 if (characterIndex === 0) {
 
@@ -788,21 +1212,31 @@
 
                     messageIndex++;
 
-                    if (messageIndex >= messages.length) {
+
+                    if (
+                        messageIndex >=
+                        messages.length
+                    ) {
+
                         messageIndex = 0;
+
                     }
 
                 }
 
             }
 
+
             setTimeout(
                 typingEffect,
                 deleting ? 40 : 80
             );
+
         }
 
+
         typingEffect();
+
 
 
         /* =========================
@@ -811,93 +1245,289 @@
 
         function createHeart() {
 
-            const heart = document.createElement("div");
+            const heart =
+                document.createElement("div");
 
             heart.classList.add("heart");
 
-            const hearts = ["❤️", "💗", "💖", "💕", "💓", "💞"];
+
+            const hearts = [
+
+                "❤️",
+                "💗",
+                "💖",
+                "💕",
+                "💓",
+                "💞"
+
+            ];
+
 
             heart.innerHTML =
-                hearts[Math.floor(Math.random() * hearts.length)];
+                hearts[
+                    Math.floor(
+                        Math.random() *
+                        hearts.length
+                    )
+                ];
+
 
             heart.style.left =
                 Math.random() * 100 + "vw";
 
+
             heart.style.fontSize =
-                (Math.random() * 20 + 12) + "px";
+                (
+                    Math.random() * 20 +
+                    12
+                ) + "px";
+
 
             heart.style.animationDuration =
-                (Math.random() * 5 + 5) + "s";
+                (
+                    Math.random() * 5 +
+                    5
+                ) + "s";
 
-            document.body.appendChild(heart);
 
-            setTimeout(function () {
-                heart.remove();
-            }, 10000);
+            document.body.appendChild(
+                heart
+            );
+
+
+            setTimeout(
+                function () {
+
+                    heart.remove();
+
+                },
+                10000
+            );
+
         }
 
-        setInterval(createHeart, 700);
+
+        setInterval(
+            createHeart,
+            700
+        );
+
+
+
+        /* ==================================================
+           ❤️ RELATIONSHIP COUNTER
+           ==================================================
+
+           YOUR RELATIONSHIP START DATE:
+
+           MAY 29, 2026
+           12:00 AM
+
+           This is the date used to calculate
+           your 87+ days together.
+
+           IMPORTANT:
+
+           JavaScript months start at 0.
+
+           January  = 0
+           February = 1
+           March    = 2
+           April    = 3
+           May      = 4
+           June     = 5
+           July     = 6
+           August   = 7
+        */
+
+
+        const relationshipStart =
+            new Date(
+                2026,  // YEAR
+                4,     // MAY
+                29,    // DAY
+                0,     // HOUR
+                0,     // MINUTE
+                0      // SECOND
+            );
+
 
 
         /* =========================
-           RELATIONSHIP COUNTER
-           CHANGE THIS DATE
+           UPDATE COUNTER
         ========================== */
-
-        // FORMAT:
-        // YEAR, MONTH - 1, DAY, HOUR, MINUTE
-
-        // You have been together for 26 days.
-        // The counter starts at exactly 26 days before this page is opened
-        // and continues counting upward in real time.
-        const relationshipStart =
-           new Date(Date.now() - (87 * 24 * 60 * 60 * 1000));
-
 
         function updateCounter() {
 
-            const now = new Date();
-           new Date(Date.now() - (87 * 24 * 60 * 60 * 1000))
+
+            // Current date and time
+
+            const now =
+                new Date();
+
+
+            // Difference between now
+            // and relationship start
+
             const difference =
-                now - relationshipStart;
+                now.getTime() -
+                relationshipStart.getTime();
+
+
+            // Prevent negative numbers
+
+            if (difference < 0) {
+
+                document.getElementById(
+                    "days"
+                ).textContent = "0";
+
+
+                document.getElementById(
+                    "hours"
+                ).textContent = "00";
+
+
+                document.getElementById(
+                    "minutes"
+                ).textContent = "00";
+
+
+                document.getElementById(
+                    "seconds"
+                ).textContent = "00";
+
+
+                return;
+            }
+
+
+            /*
+                DAYS
+            */
 
             const days =
                 Math.floor(
-                    difference / (1000 * 60 * 60 * 24)
+                    difference /
+                    (
+                        1000 *
+                        60 *
+                        60 *
+                        24
+                    )
                 );
+
+
+            /*
+                HOURS
+
+                % 24 means only the
+                remaining hours are shown.
+            */
 
             const hours =
                 Math.floor(
-                    (difference / (1000 * 60 * 60)) % 24
+                    (
+                        difference /
+                        (
+                            1000 *
+                            60 *
+                            60
+                        )
+                    ) % 24
                 );
+
+
+            /*
+                MINUTES
+            */
 
             const minutes =
                 Math.floor(
-                    (difference / (1000 * 60)) % 60
+                    (
+                        difference /
+                        (
+                            1000 *
+                            60
+                        )
+                    ) % 60
                 );
+
+
+            /*
+                SECONDS
+            */
 
             const seconds =
                 Math.floor(
-                    (difference / 1000) % 60
+                    (
+                        difference /
+                        1000
+                    ) % 60
                 );
 
-            document.getElementById("days").textContent =
+
+            /*
+                DISPLAY DAYS
+            */
+
+            document.getElementById(
+                "days"
+            ).textContent =
                 days;
 
-            document.getElementById("hours").textContent =
-                hours;
 
-            document.getElementById("minutes").textContent =
-                minutes;
+            /*
+                DISPLAY HOURS
+            */
 
-            document.getElementById("seconds").textContent =
-                seconds;
+            document.getElementById(
+                "hours"
+            ).textContent =
+                String(hours)
+                    .padStart(2, "0");
+
+
+            /*
+                DISPLAY MINUTES
+            */
+
+            document.getElementById(
+                "minutes"
+            ).textContent =
+                String(minutes)
+                    .padStart(2, "0");
+
+
+            /*
+                DISPLAY SECONDS
+            */
+
+            document.getElementById(
+                "seconds"
+            ).textContent =
+                String(seconds)
+                    .padStart(2, "0");
 
         }
 
+
+        /*
+            RUN THE COUNTER IMMEDIATELY
+        */
+
         updateCounter();
 
-        setInterval(updateCounter, 1000);
+
+        /*
+            UPDATE EVERY 1 SECOND
+        */
+
+        setInterval(
+            updateCounter,
+            1000
+        );
+
 
 
         /* =========================
@@ -907,15 +1537,34 @@
         function showSecret() {
 
             const message =
-                document.getElementById("secretMessage");
+                document.getElementById(
+                    "secretMessage"
+                );
 
-            message.style.display = "block";
 
-            for (let i = 0; i < 30; i++) {
+            message.style.display =
+                "block";
 
-                setTimeout(function () {
-                    createHeart();
-                }, i * 100);
+
+            /*
+                Create floating hearts
+                when button is clicked.
+            */
+
+            for (
+                let i = 0;
+                i < 30;
+                i++
+            ) {
+
+                setTimeout(
+                    function () {
+
+                        createHeart();
+
+                    },
+                    i * 100
+                );
 
             }
 
@@ -924,4 +1573,6 @@
     </script>
 
 </body>
+
 </html>
+```
