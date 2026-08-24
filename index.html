@@ -850,36 +850,16 @@
         // You have been together for 26 days.
         // The counter starts at exactly 26 days before this page is opened
         // and continues counting upward in real time.
-        const relationshipStart =
-           new Date(Date.now() - (87 * 24 * 60 * 60 * 1000));
+       const relationshipStart = new Date(Date.now() - (87 * 24 * 60 * 60 * 1000));
 
+function updateCounter() {
+    const now = new Date();
+    const difference = now - relationshipStart;
 
-        function updateCounter() {
-
-            const now = new Date();
-           new Date(Date.now() - (87 * 24 * 60 * 60 * 1000))
-            const difference =
-                now - relationshipStart;
-
-            const days =
-                Math.floor(
-                    difference / (1000 * 60 * 60 * 24)
-                );
-
-            const hours =
-                Math.floor(
-                    (difference / (1000 * 60 * 60)) % 24
-                );
-
-            const minutes =
-                Math.floor(
-                    (difference / (1000 * 60)) % 60
-                );
-
-            const seconds =
-                Math.floor(
-                    (difference / 1000) % 60
-                );
+    const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
+    const minutes = Math.floor((difference / (1000 * 60)) % 60);
+    const seconds = Math.floor((difference / 1000) % 60);
 
             document.getElementById("days").textContent =
                 days;
