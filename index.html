@@ -851,7 +851,9 @@
         // The counter starts at exactly 26 days before this page is opened
         // and continues counting upward in real time.
       // Initializes the tracker precisely 87 days ago from this moment
-const relationshipStart = new Date(Date.now() - (87 * 24 * 60 * 60 * 1000));
+// Hardcodes your exact anniversary time to prevent timezone and refresh drift
+const relationshipStart = new Date('2026-05-29T00:00:00'); 
+
 
 function updateCounter() {
     const now = new Date();
